@@ -1,8 +1,7 @@
 import {Request, Response} from 'express'
 import { User } from '../../../database/userSchema'
 
-export const fetchAllUsers = async (req: Request, res: Response) => {
-    console.log('fetch all users called')
+export const fetchAllUsers = async (_req: Request, res: Response) => {
     try {
         const users = await User.find()
         res.status(200).json(users)

@@ -2,7 +2,6 @@ import {Request, Response} from 'express'
 import { User } from '../../../database/userSchema'
 
 export const fetchUser = async (req: Request, res: Response) => {
-    console.log('fetch user called')
     const {id} = req.params
     try {
         const user = await User.findById(id)

@@ -14,8 +14,8 @@ userRoutes.get('/:id', fetchUser)
 
 userRoutes.post('/', createUser)
 
-userRoutes.put('/', updateUser)
+userRoutes.put('/:id', updateUser)
 
-userRoutes.delete('/', deleteUser)
+userRoutes.delete('/:id', deleteUser)
 
 export default userRoutes
