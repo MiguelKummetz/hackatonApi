@@ -1,9 +1,9 @@
 import mongoose from 'mongoose';
 
 //conexion con mongoDB
-export const connectDB = async (connectionString: string | undefined) => {
+export const connectDB = async (connectionString: string) => {
   mongoose
-    .connect(connectionString)
+    .connect(connectionString!)
     .then(() => {
       console.log('Database connected');
     })

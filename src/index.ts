@@ -6,7 +6,7 @@ import activityRoutes from './api/routes/activityRoutes'
 
 dotenv.config()
 const connectionString = process.env.DB_URI
-connectDB(connectionString)
+connectDB(connectionString!)
 
 //Server
 const app = express()
