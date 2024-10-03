@@ -8,7 +8,7 @@ import { fetchAllUsers } from '../controllers/user/fetchAllUsers'
 
 const userRoutes = express.Router()
 
-userRoutes.get('/', fetchAllUsers)
+userRoutes.get('/all', fetchAllUsers)
 
 userRoutes.get('/:id', fetchUser)
 

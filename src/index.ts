@@ -14,8 +14,8 @@ app.use(express.json())
 
 const PORT = process.env.PORT
 
-app.use("/users", userRoutes);
-app.use("/activities", activityRoutes)
+app.use("/user", userRoutes);
+app.use("/activity", activityRoutes)
 
 app.get('/ping', (_req, res) => {
     console.log('someone pinged here!')
