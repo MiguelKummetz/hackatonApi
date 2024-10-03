@@ -1,9 +1,9 @@
 import express from 'express'
-import { createUser } from '../controllers/createUser'
-import { fetchUser } from '../controllers/fetchUser'
-import { updateUser } from '../controllers/updateUser'
-import { deleteUser } from '../controllers/deleteUser'
-import { fetchAllUsers } from '../controllers/fetchAllUsers'
+import { createUser } from '../controllers/user/createUser'
+import { fetchUser } from '../controllers/user/fetchUser'
+import { updateUser } from '../controllers/user/updateUser'
+import { deleteUser } from '../controllers/user/deleteUser'
+import { fetchAllUsers } from '../controllers/user/fetchAllUsers'
 
 
 const userRoutes = express.Router()

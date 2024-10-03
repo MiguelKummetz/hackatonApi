@@ -1,5 +1,5 @@
 import {Request, Response} from 'express'
-import { User } from '../../database/userSchema'
+import { User } from '../../../database/userSchema'
 
 export const fetchUser = async (req: Request, res: Response) => {
     console.log('fetch user called')
@@ -12,6 +12,6 @@ export const fetchUser = async (req: Request, res: Response) => {
             res.status(404).json({message: 'User not found'})
         }
     } catch (err) {
-        res.status(500).json({ message: 'Error retrieving users', error: err });
+        res.status(500).json({ message: 'Error retrieving user', error: err });
     }
 }
