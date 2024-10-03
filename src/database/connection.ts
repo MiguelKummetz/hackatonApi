@@ -1,0 +1,17 @@
+import mongoose from 'mongoose';
+
+//conexion con mongoDB
+export const connectDB = async (connectionString: string | undefined) => {
+  mongoose
+    .connect(connectionString)
+    .then(() => {
+      console.log('Database connected');
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+  process.on('uncaughtException', (error) => {
+    console.error(error);
+    mongoose.connection.close();
+  });
+};
