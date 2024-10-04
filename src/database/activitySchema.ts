@@ -4,6 +4,7 @@ const activitySchema = new Schema({
     name: {type:String, required: true, unique: true},
     description: {type:String, required: true},
     maxCapacity: {type:Number, required: true},
+    participants: [{type: Schema.Types.ObjectId, ref:'User'}]
 })
 
 activitySchema.set('toJSON', {

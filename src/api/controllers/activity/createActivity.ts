@@ -8,6 +8,7 @@ export const createActivity = async (req: Request, res: Response) => {
             name: name,
             description: description,
             maxCapacity: maxCapacity,
+            participants: []
         })
         const savedActivity = await newActivity.save();
         res.status(201).json(savedActivity)

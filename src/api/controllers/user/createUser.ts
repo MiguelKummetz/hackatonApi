@@ -9,7 +9,8 @@ export const createUser = async (req: Request, res: Response) => {
             name: name,
             lastname: lastname,
             age: age,
-            email: email
+            email: email,
+            activities: []
         })
         const savedUser = await newUser.save();
         res.status(201).json(savedUser)

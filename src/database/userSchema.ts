@@ -4,7 +4,8 @@ const userSchema = new Schema({
     name: {type:String, required: true},
     lastname: {type:String, required: true},
     age: {type:Number, required: true},
-    email: {type:String, required: true, unique: true}
+    email: {type:String, required: true, unique: true},
+    activities: [{type: Schema.Types.ObjectId, ref:'Activity'}]
 })
 
 userSchema.set('toJSON', {
