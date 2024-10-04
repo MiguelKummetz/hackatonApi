@@ -4,7 +4,7 @@ import { Activity } from '../../../database/activitySchema'
 export const fetchActivity = async (req: Request, res: Response) => {
     const {id} = req.params
     try {
-        const activity = await Activity.findById(id)
+        const activity = await Activity.findById(id).populate({path:'participants', select:'-activities'})
         if (activity) {
             res.status(200).json(activity)
         }else{

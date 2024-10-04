@@ -4,7 +4,7 @@ import { User } from '../../../database/userSchema'
 export const fetchUser = async (req: Request, res: Response) => {
     const {id} = req.params
     try {
-        const user = await User.findById(id)
+        const user = await User.findById(id).populate({path:'activities', select:'-participants'})
         if (user) {
             res.status(200).json(user)
         }else{
