@@ -1,24 +1,23 @@
-import express from 'express'
-import { fetchActivity } from '../controllers/activity/fetchActivity'
-import { createActivity } from '../controllers/activity/createActivity'
-import { singUpActivity } from '../controllers/activity/singUpActivity'
-import { importActivity } from '../controllers/activity/importActivity'
-import { exportActivity } from '../controllers/activity/exportActivity'
-import { fetchAllActivities } from '../controllers/activity/fetchAllActivities'
+import express from "express";
+import { fetchActivity } from "../controllers/activity/fetchActivity";
+import { createActivity } from "../controllers/activity/createActivity";
+import { singUpActivity } from "../controllers/activity/singUpActivity";
+import { importActivity } from "../controllers/activity/importActivity";
+import { fetchAllActivities } from "../controllers/activity/fetchAllActivities";
+import { exportActivity } from "../controllers/activity/exportActivity";
 
+const activityRoutes = express.Router();
 
-const activityRoutes = express.Router()
+activityRoutes.get("/all", fetchAllActivities);
 
-activityRoutes.get('/all', fetchAllActivities)
+activityRoutes.get("/:id", fetchActivity);
 
-activityRoutes.get('/:id', fetchActivity)
+activityRoutes.post("/", createActivity);
 
-activityRoutes.post('/', createActivity)
+activityRoutes.put("/:id", singUpActivity);
 
-activityRoutes.put('/:id', singUpActivity)
+activityRoutes.post("/", importActivity);
 
-activityRoutes.post('/', importActivity)
+activityRoutes.post("/export/:id", exportActivity);
 
-activityRoutes.get('/:id', exportActivity)
-
-export default activityRoutes
+export default activityRoutes;
