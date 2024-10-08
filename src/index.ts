@@ -12,7 +12,7 @@ connectDB(connectionString!)
 const app = express()
 app.use(express.json())
 
-const PORT = process.env.PORT
+const PORT = process.env.PORT || 3000
 
 app.use("/user", userRoutes);
 app.use("/activity", activityRoutes)
@@ -23,5 +23,5 @@ app.get('/ping', (_req, res) => {
 })
 
 app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`)
+    console.log(`✅ Server running on port ${PORT}`)
 })

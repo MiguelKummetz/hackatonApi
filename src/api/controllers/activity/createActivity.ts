@@ -1,8 +1,8 @@
-import {Request, Response} from 'express'
-import { Activity } from '../../../database/activitySchema';
+import { Request, Response } from 'express'
+import { Activity } from '../../../database/schemas/activitySchema';
 
 export const createActivity = async (req: Request, res: Response) => {
-    const {name, description, maxCapacity} = req.body;
+    const { name, description, maxCapacity } = req.body;
     try {
         const newActivity = new Activity({
             name: name,

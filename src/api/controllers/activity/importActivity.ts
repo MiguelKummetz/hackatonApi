@@ -1,21 +1,24 @@
 import { Request, Response } from 'express'
-import { IActivity } from '../../../models/activityModel'; 
-import { Activity } from '../../../database/activitySchema';
-import fs from "fs";
+import { IActivity } from '../../../database/models/activityModel';
+import { Activity } from '../../../database/schemas/activitySchema';
+import { getRootPath } from '../../middleware/getRootPath';
 import path from "path";
+import fs from "fs";
 
 export const importActivity = async (req: Request, res: Response) => {
-    const fileName = req.body;
-    const filePath = path.join(__dirname, fileName);
-    
-    try {
-    const fileContent: string = fs.readFile(filePath, 'utf8', (err) => {
-        if (err)
-            console.log({ message: "Error during read" });
-    }
-    const NewActivityData: IActivity = JSON.parse(fileContent)
 
-    const {name, description, maxCapacity} = NewActivityData
+    console.log('entra en importActivity')
+    const { fileName } = req.body;
+    const toRoot = getRootPath(__dirname)
+    const filePath = path.join(toRoot, fileName);
+
+
+    try {
+        const fileContent = fs.readFileSync(filePath, 'utf8')
+
+        const NewActivityData: IActivity = JSON.parse(fileContent)
+
+        const { name, description, maxCapacity } = NewActivityData
 
         const newActivity = new Activity({
             name: name,
@@ -25,8 +28,7 @@ export const importActivity = async (req: Request, res: Response) => {
         })
         const savedActivity = await newActivity.save();
         res.status(201).json(savedActivity)
-        res.status(200).json(jsonData);
     } catch (parseError) {
-        res.status(500).json({ message: 'Error parsing JSON'});
+        res.status(500).json({ message: 'Error parsing JSON' });
     }
 };

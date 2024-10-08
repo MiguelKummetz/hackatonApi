@@ -16,7 +16,7 @@ activityRoutes.post("/", createActivity);
 
 activityRoutes.put("/:id", singUpActivity);
 
-activityRoutes.post("/", importActivity);
+activityRoutes.post("/import", importActivity);
 
 activityRoutes.post("/export/:id", exportActivity);
 

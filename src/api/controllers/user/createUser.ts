@@ -1,9 +1,9 @@
-import {Request, Response} from 'express'
-import { User } from '../../../database/userSchema'
+import { Request, Response } from 'express'
+import { User } from '../../../database/schemas/userSchema'
 
 export const createUser = async (req: Request, res: Response) => {
-    //falta implementar un mensaje si el email ya existe
-    const {name, lastname, age, email} = req.body;
+
+    const { name, lastname, age, email } = req.body;
     try {
         const newUser = new User({
             name: name,

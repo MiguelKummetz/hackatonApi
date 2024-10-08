@@ -1,6 +1,6 @@
-import {Request, Response} from 'express'
-import { Activity } from '../../../database/activitySchema'
-import { User } from '../../../database/userSchema'
+import { Request, Response } from 'express'
+import { Activity } from '../../../database/schemas/activitySchema'
+import { User } from '../../../database/schemas/userSchema'
 
 export const singUpActivity = async (req: Request, res: Response) => {
 
@@ -9,19 +9,19 @@ export const singUpActivity = async (req: Request, res: Response) => {
 
     try {
         const updatedActivity = await Activity.findByIdAndUpdate(
-            activityId, 
-            { $addToSet: { participants: userId } }, 
+            activityId,
+            { $addToSet: { participants: userId } },
             { new: true, runValidators: true });
         const updatedUser = await User.findByIdAndUpdate(
             userId,
-            { $addToSet: { activities: activityId } }, 
+            { $addToSet: { activities: activityId } },
             { new: true, runValidators: true });
 
-        if (!updatedActivity){
-            res.status(404).json({message: 'Activity not found'});
-        }else if(!updatedUser){
-            res.status(404).json({message: 'User not found'});
-        }else{
+        if (!updatedActivity) {
+            res.status(404).json({ message: 'Activity not found' });
+        } else if (!updatedUser) {
+            res.status(404).json({ message: 'User not found' });
+        } else {
             res.status(200).json(updatedActivity);
         }
     } catch (err) {

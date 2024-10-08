@@ -1,15 +1,14 @@
 {
   "name": "hackatonapi",
   "version": "1.0.0",
-  "description": "",
+  "description": "API per a una aplicació web que gestioni usuaris i activitats.",
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node-dev src/index.ts",
     "start": "tsc && node build/index.js",
-    "test": "test",
+    "dev": "ts-node-dev src/index.ts",
     "tsc": "tsc"
   },
-  "author": "",
+  "author": "Ami Kummetz",
   "license": "ISC",
   "devDependencies": {
     "@types/express": "^5.0.0",
