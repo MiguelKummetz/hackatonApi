@@ -1,5 +1,5 @@
-export interface Activity {
+export interface IActivity {
     name: string;
     description: string;
-    capacity: number;
+    maxCapacity: number;
 }

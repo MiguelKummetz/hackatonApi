@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import fs from "fs";
 import { Activity } from "../../../database/activitySchema";
+import fs from "fs";
 import path from "path";
 
 export const exportActivity = async (req: Request, res: Response) => {
@@ -17,7 +17,7 @@ export const exportActivity = async (req: Request, res: Response) => {
     fs.writeFile(filePath + ".json", jsonData, (err) => {
       if (err)
         console.log({ message: "Error during write" });
-    });
+    });    
     res.status(201).json({ message: "File created succesfuly", filePath });
   } catch (err) {
     res.status(500).json({ message: "Error exporting activity", error: err });
